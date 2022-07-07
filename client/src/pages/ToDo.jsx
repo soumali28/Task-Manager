@@ -2,9 +2,13 @@ import React from "react";
 import "./styles/todo.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import Navbar from "./Navbar";
 
 function ToDo() {
   return (
+    <>
+
+   <Navbar />
     <div className="bg-gradient-to-r from-purple-400 via-purple-700 to-purple-900 contain text-center">
       <div className="items">
         <h1 className="text-3xl text-purple-300 block mt-6 mb-4 font-bold">
@@ -48,6 +52,7 @@ function ToDo() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

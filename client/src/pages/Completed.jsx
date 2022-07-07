@@ -1,7 +1,9 @@
 import React from "react";
+import Navbar from "./Navbar";
 
 function Completed() {
   return (
+    <> <Navbar />
     <div className="bg-gradient-to-r from-purple-400 via-purple-700 to-purple-900  contain text-center">
       <div className="items">
         <h1 className="text-3xl text-purple-300 block mt-6 mb-4 font-bold">
@@ -29,6 +31,7 @@ function Completed() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

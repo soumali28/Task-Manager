@@ -7,7 +7,6 @@ import ToDo from "./pages/ToDo";
 function App() {
   return (
     <>
-      <Navbar />
       <Routes>
         <Route path="/" element={<SignIn />} />
         <Route path="/todo" element={<ToDo />} />
