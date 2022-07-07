@@ -24,7 +24,7 @@ module.exports = {
       },
       pink: {
         600: "#db2777",
-        700: "#be185d",
+        700: "#ee062d",
       },
       rose: "#f43f5e",
     },

@@ -1,17 +1,15 @@
 .contain {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .sign_in_container {
-  /* From https://css.glass */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sign_in_container {
   background: rgba(247, 243, 243, 0.342);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.301);
   backdrop-filter: blur(4.7px);
   -webkit-backdrop-filter: blur(4.7px);
   border: 1px solid #701a75;
-    padding: 30px 80px;
-    margin: 100px 0;
-  }
-  
+  padding: 30px 80px;
+  margin: 100px 0;
+}

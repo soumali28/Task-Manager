@@ -1,0 +1,22 @@
+.add_list {
+  background: rgba(247, 243, 243, 0.342);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.301);
+  backdrop-filter: blur(4.7px);
+  -webkit-backdrop-filter: blur(4.7px);
+  border: 1px solid #701a75;
+  padding: 30px;
+  margin: 50px 0;
+  display: flex;
+}
+.add_list .icon {
+  color: #4b0057;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.534);
+  border-radius: 50px;
+  font-size: 30px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.add_list .icon:hover {
+  color: #fa0000;
+}
