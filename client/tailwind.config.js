@@ -5,6 +5,7 @@ module.exports = {
   theme: {
     colors: {
       transparent: "transparent",
+      green: "#16a34a",
       zinc: {
         400: "#a1a1aa",
         500: "#71717a",

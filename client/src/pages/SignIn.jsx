@@ -3,7 +3,7 @@ import "./styles/signin.css";
 
 function SignIn() {
   return (
-    <div className="bg-gradient-to-r from-purple-500 via-purple-700 to-pink-600 contain">
+    <div className="bg-gradient-to-r from-purple-400 via-purple-700 to-purple-900 contain">
       <div className="sign_in_container text-center">
         <h1 className="text-5xl mb-4 text-zinc-900">SignUp</h1>
 
