@@ -68,7 +68,7 @@ function SignIn() {
 
           <p className="text-xl">OR</p>
           <p>
-          {click ? "Not an user" : "Already an user"}? <button onClick={login}> {click ? "Register" : "Login"}</button>
+          {click ? "Not an user" : "Already an user"}? <button onClick={login} className="font-bold"> {click ? "Register" : "Login"}</button>
           </p>
         </div>
       </div>
