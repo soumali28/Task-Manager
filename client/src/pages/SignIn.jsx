@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./styles/signin.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle, faSquareEnvelope} from "@fortawesome/free-solid-svg-icons";
 
 function SignIn() {
   const [click, setClick] = useState(false);
@@ -42,7 +44,7 @@ function SignIn() {
       focus:outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900"
                   />
                 </label>
-              ) }
+              )}
               <label className="block">
                 <span className="block text-xl font-medium text-slate-700">
                   Password:
@@ -67,8 +69,16 @@ function SignIn() {
           </div>
 
           <p className="text-xl">OR</p>
+          <FontAwesomeIcon
+            icon="face-clouds"
+            className="icon"
+          />
           <p>
-          {click ? "Not an user" : "Already an user"}? <button onClick={login} className="font-bold"> {click ? "Register" : "Login"}</button>
+            {click ? "Not an user" : "Already an user"}?{" "}
+            <button onClick={login} className="font-bold">
+              {" "}
+              {click ? "Register" : "Login"}
+            </button>
           </p>
         </div>
       </div>

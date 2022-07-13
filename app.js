@@ -8,7 +8,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
-    res.send("meow");
+    res.sendFile(__dirname + "/client/src/pages/SignIn.jsx");
 })
 
 app.listen(port, (err) => {
