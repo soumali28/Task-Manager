@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Hello World" });
 });
 // routes for the tasks
-app.use("/api/getgoals", require("./server/routes/todos"));
+app.use("/api/todos", require("./server/routes/todos"));
 
 app.listen(port, (err) => {
   if (err) return console.log(err);

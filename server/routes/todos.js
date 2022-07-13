@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const { getTodo } = require("../controllers/todoController");
 
-router.get("/", (req, res) => {
-  res.json({ message: "Get Goals" });
-});
+router.get("/", getTodo);
 
 router.post("/", (req, res) => {
   res.json({ message: "Create Goals" });
