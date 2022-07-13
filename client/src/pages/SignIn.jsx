@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles/signin.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle, faSquareEnvelope} from "@fortawesome/free-solid-svg-icons";
+import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 
 function SignIn() {
   const [click, setClick] = useState(false);
@@ -69,10 +69,12 @@ function SignIn() {
           </div>
 
           <p className="text-xl">OR</p>
-          <FontAwesomeIcon
-            icon="face-clouds"
-            className="icon"
-          />
+          <div className="flex m-2 p-3 justify-center">
+            <button><FaGoogle className="mx-3 text-2xl" /></button>
+            <button><FaFacebook className="mx-3 text-2xl" /></button>
+            <button><FaGithub className="mx-3 text-2xl"/></button>
+          </div>
+
           <p>
             {click ? "Not an user" : "Already an user"}?{" "}
             <button onClick={login} className="font-bold">
