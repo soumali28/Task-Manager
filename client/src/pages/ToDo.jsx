@@ -29,10 +29,12 @@ function ToDo() {
         url: "http://localhost:8000/api/todos",
         data: data
       })
-      alert("Form submitted succesfully")
+      alert("Form submitted succesfully");
+      window.location.reload();
     }
     catch(err){
       alert("Opps something went wrong");
+      console.log(err);
       return[];
     }
   }

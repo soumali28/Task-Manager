@@ -22,20 +22,31 @@ function TodoList() {
   console.log(data);
   const [isUpdate, setUpdate] = useState(false);
   // updating the data
-  async function updateTask() {
+  const updateTask = (id) => () => {
     try {
-      const res = await axios({
+      const res = axios({
         method: "PUT",
-        url: "http://localhost:8000/api/todos",
+        url: "http://localhost:8000/api/todos/" + id,
       });
-      setData(res.data);
+      setUpdate(!isUpdate);
     } catch (err) {
       console.log(err);
     }
-    setUpdate(!isUpdate);
-  }
+    console.log(id);
+  };
 
-  async function deleteTask() {}
+  const deleteTask = (id) => async () => {
+    try {
+      const res = await axios({
+        method: "DELETE",
+        url: "http://localhost:8000/api/todos/" + id,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+
+    fetchData();
+  };
   return (
     <div className="flex justify-center items-center">
       <div className="list text-left">
@@ -74,14 +85,14 @@ function TodoList() {
                 {isUpdate ? (
                   <button
                     className="mx-3 px-2 py-2  rounded-lg hover:bg-zinc-700 hover:text-purple-100 hover:border-none"
-                    onClick={updateTask}
+                    onClick={updateTask(item._id)}
                   >
                     <FaCheck />
                   </button>
                 ) : (
                   <button
                     className="mx-3 px-2 py-2  rounded-lg hover:bg-zinc-500 hover:text-purple-100 hover:border-none"
-                    onClick={updateTask}
+                    onClick={updateTask(item._id)}
                   >
                     <FaEdit />
                   </button>
@@ -89,7 +100,7 @@ function TodoList() {
 
                 <button
                   className="mx-3 px-2 py-2 rounded-lg hover:bg-pink-700 hover:text-purple-100 hover:border-none"
-                  onClick={deleteTask}
+                  onClick={deleteTask(item._id)}
                 >
                   <FaTrash />
                 </button>
