@@ -9,6 +9,15 @@ const getTodo = asyncHandler(async (req, res) => {
   res.json(tasks);
 });
 
+
+// @desp GET goal by id
+// @route GET /api/todos
+// @access PRIVATE
+const getTodoId = asyncHandler(async (req, res) => {
+  const tasks = await Todo.findById(req.params.id);
+  res.json(tasks);
+});
+
 // @desp  Post goals
 // @route POST /api/todos
 // @access PRIVATE
@@ -57,6 +66,7 @@ const deleteTodo = asyncHandler(async (req, res) => {
 
 module.exports = {
   getTodo,
+  getTodoId,
   postTodo,
   updateTodo,
   deleteTodo,

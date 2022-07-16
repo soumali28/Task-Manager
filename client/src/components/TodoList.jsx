@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaCheck, FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import UpdateTodo from "./UpdateTodo";
 
 function TodoList() {
   // fetching the data
@@ -21,10 +20,8 @@ function TodoList() {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(data);
 
-  // updating the data
-
+  // deleting the data
 
   const deleteTask = (id) => async () => {
     try {
@@ -38,28 +35,69 @@ function TodoList() {
 
     fetchData();
   };
+
+  // sets the id of the date and id of task
+  // const [isClicked, setClick] = useState(false);
+
+  // function completedTask() {
+  //   setClick((prevValue) => {
+  //     return !prevValue;
+  //   });
+  // }
+
+  const [findId, setId] = useState([]);
+  const completedTask = (id) => async () => {
+    try {
+      const res = await axios({
+        method: "GET",
+        url: "http://localhost:8000/api/todos/" + id,
+      });
+      const id = res.data;
+      setId((prevValue) => ({ ...prevValue, [res.data]: res.data }));
+    } catch (err) {
+      console.log(err);
+    }
+    console.log(findId);
+  };
   return (
     <div className="flex justify-center items-center">
       <div className="list text-left">
         {/* mapping will start form here */}
         {data.map((item) => {
           return (
-            <div className="mb-4 flex justify-between items-center border-b pb-3 border-purple-700" key={item._id}>
+            <div
+              className="mb-4 flex justify-between items-center border-b pb-3 border-purple-700"
+              key={item._id}
+            >
               <div>
                 {" "}
-                <h1 className="text-3xl">{item.task}</h1>
-                <p className="text-xl">{item.desp}</p>
+                <h1
+                  className={
+                    findId._id === item._id
+                      ? "text-3xl line-through"
+                      : "text-3xl"
+                  }
+                >
+                  {item.task}
+                </h1>
+                <p
+                  className={
+                    findId._id === item._id ? "text-xl line-through" : "text-xl"
+                  }
+                >
+                  {item.desp}
+                </p>
               </div>
 
               <div>
-                <button className="mx-3 px-2 py-2  rounded-lg hover:bg-green hover:text-purple-100 hover:border-none">
+                <button
+                  onClick={completedTask(item._id)}
+                  className="mx-3 px-2 py-2  rounded-lg hover:bg-green hover:text-purple-100 hover:border-none"
+                >
                   <FaCheck />
                 </button>
                 <Link to={"/todo:" + `${item._id}`} state={{ prop: item }}>
-                  <button
-                    className="mx-3 px-2 py-2  rounded-lg hover:bg-zinc-500 hover:text-purple-100 hover:border-none"
-               
-                  >
+                  <button className="mx-3 px-2 py-2  rounded-lg hover:bg-zinc-500 hover:text-purple-100 hover:border-none">
                     <FaEdit />
                   </button>
                 </Link>
