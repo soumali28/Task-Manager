@@ -46,19 +46,26 @@ function TodoList() {
   // }
 
   const [findId, setId] = useState([]);
-  const completedTask = (id) => async () => {
-    try {
-      const res = await axios({
-        method: "GET",
-        url: "http://localhost:8000/api/todos/" + id,
-      });
-      const id = res.data;
-      setId((prevValue) => ({ ...prevValue, [res.data]: res.data }));
-    } catch (err) {
-      console.log(err);
-    }
+  const completedTask = (id) => (e) => {
+    const name = e.target.name;
+
+    setId(id);
+
     console.log(findId);
   };
+
+  // const completedTask = (id) => async (e) => {
+  //   try {
+  //     const res = await axios({
+  //       method: "GET",
+  //       url: "http://localhost:8000/api/todos/" + id,
+  //     });
+  //     setId(res.data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  //   console.log(findId);
+  // };
   return (
     <div className="flex justify-center items-center">
       <div className="list text-left">
@@ -73,16 +80,14 @@ function TodoList() {
                 {" "}
                 <h1
                   className={
-                    findId._id === item._id
-                      ? "text-3xl line-through"
-                      : "text-3xl"
+                    findId === item._id ? "text-3xl line-through" : "text-3xl"
                   }
                 >
                   {item.task}
                 </h1>
                 <p
                   className={
-                    findId._id === item._id ? "text-xl line-through" : "text-xl"
+                    findId === item._id ? "text-xl line-through" : "text-xl"
                   }
                 >
                   {item.desp}
@@ -91,6 +96,9 @@ function TodoList() {
 
               <div>
                 <button
+                  key={item._id}
+                  type="button"
+                  name={item._id}
                   onClick={completedTask(item._id)}
                   className="mx-3 px-2 py-2  rounded-lg hover:bg-green hover:text-purple-100 hover:border-none"
                 >

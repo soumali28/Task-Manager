@@ -23,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/todos", require("./server/routes/todos"));
+app.use("/api/users", require("./server/routes/userRoutes"));
 
 app.use(errorHandler);
 
