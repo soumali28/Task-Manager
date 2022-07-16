@@ -7,8 +7,12 @@ const connectDb = require("./server/config/db");
 
 const app = express();
 const port = process.env.PORT || 5000;
-
 connectDb();
+
+// cors: * makes public api, orgin can have array of urls
+app.use(cors({
+  origin: "http://localhost:3000"
+}))
 
 // testing route
 app.get("/", (req, res) => {
