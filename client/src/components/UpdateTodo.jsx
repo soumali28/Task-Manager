@@ -1,22 +1,37 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaCheck, FaPlus } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../pages/Navbar";
 import TodoList from "./TodoList";
 
 function UpdateTodo(props) {
   const [data, setData] = useState([]);
   const dataValue = useLocation().state.prop;
-  console.log(dataValue);
-  console.log();
-  function getTask() {
-    setData(dataValue);
-  }
-  useEffect(() => {
-    getTask();
-  }, []);
-
+  const handleInput = (input) => (e) => {
+    const { value } = e.target;
+    setData((prevData) => ({
+      ...prevData,
+      [input]: value,
+    }));
+  };
+  const navigate = useNavigate();
+  const updateTask = (id) => () => {
+    try {
+      const res = axios({
+        method: "PUT",
+        url: "http://localhost:8000/api/todos/" + id,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        data: data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+    navigate(-1);
+  };
   return (
     <>
       <Navbar />
@@ -29,17 +44,22 @@ function UpdateTodo(props) {
           <div className="add_list">
             <input
               type="text"
-              defaultValue={data.task}
+              defaultValue={dataValue.task}
+              onChange={handleInput("task")}
               className="mt-1 mb-3 mx-3 w-1/3 px-12 py-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
       focus:outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900"
             />
             <input
               type="text"
-              defaultValue={data.desp}
+              defaultValue={dataValue.desp}
+              onChange={handleInput("desp")}
               className="mt-1 mb-3 w-1/2 px-12 py-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
       focus:outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900"
             />
-            <button className="mx-8 my-4 p-2  rounded-lg hover:bg-zinc-700 hover:text-purple-100 hover:border-none">
+            <button
+              className="mx-8 my-4 p-2  rounded-lg hover:bg-zinc-700 hover:text-purple-100 hover:border-none"
+              onClick={updateTask(dataValue._id)}
+            >
               <FaCheck />
             </button>
             <Link to="/todo">

@@ -22,20 +22,9 @@ function TodoList() {
     fetchData();
   }, []);
   console.log(data);
-  const [isUpdate, setUpdate] = useState(false);
+
   // updating the data
-  const updateTask = (id) => () => {
-    try {
-      const res = axios({
-        method: "PUT",
-        url: "http://localhost:8000/api/todos/" + id,
-      });
-      setUpdate(!isUpdate);
-    } catch (err) {
-      console.log(err);
-    }
-    console.log(id);
-  };
+
 
   const deleteTask = (id) => async () => {
     try {
@@ -55,7 +44,7 @@ function TodoList() {
         {/* mapping will start form here */}
         {data.map((item) => {
           return (
-            <div className="mb-4 flex justify-between items-center border-b pb-3 border-purple-700">
+            <div className="mb-4 flex justify-between items-center border-b pb-3 border-purple-700" key={item._id}>
               <div>
                 {" "}
                 <h1 className="text-3xl">{item.task}</h1>
@@ -69,7 +58,7 @@ function TodoList() {
                 <Link to={"/todo:" + `${item._id}`} state={{ prop: item }}>
                   <button
                     className="mx-3 px-2 py-2  rounded-lg hover:bg-zinc-500 hover:text-purple-100 hover:border-none"
-                    onClick={updateTask(item._id)}
+               
                   >
                     <FaEdit />
                   </button>
