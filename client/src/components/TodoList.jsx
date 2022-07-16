@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaCheck, FaEdit, FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import UpdateTodo from "./UpdateTodo";
 
 function TodoList() {
   // fetching the data
@@ -54,49 +56,24 @@ function TodoList() {
         {data.map((item) => {
           return (
             <div className="mb-4 flex justify-between items-center border-b pb-3 border-purple-700">
-              {isUpdate ? (
-                <div>
-                  {" "}
-                  <input
-                    type="text"
-                    className="mt-1 mb-3 mx-3  px-12 py-2 bg-transparent  border-slate-300 rounded-md text-md shadow-sm placeholder-zinc-700
-      focus:outline-none focus:border-none focus:ring-0 focus:ring-none"
-                  />
-                  <input
-                    type="text"
-                    className="mt-1 mb-3 mx-3  px-12 py-2 bg-transparent  border-slate-300 rounded-md text-md shadow-sm placeholder-zinc-700
-      focus:outline-none focus:border-none focus:ring-0 focus:ring-none"
-                  />
-                </div>
-              ) : (
-                <div>
-                  {" "}
-                  <h1 className="text-3xl">{item.task}</h1>
-                  <p className="text-xl">{item.desp}</p>
-                </div>
-              )}
+              <div>
+                {" "}
+                <h1 className="text-3xl">{item.task}</h1>
+                <p className="text-xl">{item.desp}</p>
+              </div>
 
               <div>
-                {isUpdate ? null : (
-                  <button className="mx-3 px-2 py-2  rounded-lg hover:bg-green hover:text-purple-100 hover:border-none">
-                    <FaCheck />
-                  </button>
-                )}
-                {isUpdate ? (
-                  <button
-                    className="mx-3 px-2 py-2  rounded-lg hover:bg-zinc-700 hover:text-purple-100 hover:border-none"
-                    onClick={updateTask(item._id)}
-                  >
-                    <FaCheck />
-                  </button>
-                ) : (
+                <button className="mx-3 px-2 py-2  rounded-lg hover:bg-green hover:text-purple-100 hover:border-none">
+                  <FaCheck />
+                </button>
+                <Link to={"/todo:" + `${item._id}`} state={{ prop: item }}>
                   <button
                     className="mx-3 px-2 py-2  rounded-lg hover:bg-zinc-500 hover:text-purple-100 hover:border-none"
                     onClick={updateTask(item._id)}
                   >
                     <FaEdit />
                   </button>
-                )}
+                </Link>
 
                 <button
                   className="mx-3 px-2 py-2 rounded-lg hover:bg-pink-700 hover:text-purple-100 hover:border-none"
