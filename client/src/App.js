@@ -1,4 +1,7 @@
 import { Route, Routes } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+
+// components and pages
 import UpdateTodo from "./components/UpdateTodo";
 import Login from "./pages/Login";
 import SignIn from "./pages/SignIn";

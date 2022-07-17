@@ -3,10 +3,12 @@ import "./styles/signin.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
 function SignIn() {
   // registering the user
+
   const [data, setData] = useState([
     {
       name: "",
@@ -23,17 +25,25 @@ function SignIn() {
     }));
   };
 
+  // validation of the form fields
+  const [error, setError] = useState(false);
+  const { name, email, password } = data;
+
   async function registerUser() {
+    // checking if any of the field is null
+    if (name || !email || !password) {
+      setError(true);
+    }
     try {
       const res = await axios({
         method: "POST",
         url: "http://localhost:8000/api/users",
         data: data,
       });
-      alert("User Register");
-      window.location.reload(false);
+      toast.success("User Register");
+      navigate("/todo");
     } catch (err) {
-      alert("Opps something went wrong");
+      toast.error("Oh no! An erroe occured");
       console.log(err);
       return [];
     }
@@ -64,6 +74,9 @@ function SignIn() {
                   className="mt-1 mb-3 block w-full px-12 py-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
       focus:outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900"
                 />
+                {error && !name && (
+                  <span className="text-purple-200">*Enter valid name</span>
+                )}
               </label>
 
               <label className="block">
@@ -78,6 +91,9 @@ function SignIn() {
                   className="mt-1 mb-3 block w-full px-12 py-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
       focus:outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900"
                 />
+                 {error && !email && (
+                  <span className="text-purple-200">*Enter valid email</span>
+                )}
               </label>
 
               <label className="block">
@@ -92,8 +108,11 @@ function SignIn() {
                   className="mt-1 mb-4 block w-full px-12 py-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
       focus:outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900"
                 />
+                 {error && !password && (
+                  <span className="text-purple-200">*Enter password</span>
+                )}
               </label>
-
+              <ToastContainer />
               <button
                 type="button"
                 className="mt-4 mb-2 mx-8 block w-3/4 px-3 py-2 bg-transparent  border-slate-300 rounded-md text-md shadow-md shadow-purple-800/60 placeholder-zinc-700
