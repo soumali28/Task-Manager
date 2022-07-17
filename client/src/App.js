@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import UpdateTodo from "./components/UpdateTodo";
+import Login from "./pages/Login";
 import SignIn from "./pages/SignIn";
 import ToDo from "./pages/ToDo";
 
@@ -8,6 +9,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<SignIn />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/todo" element={<ToDo />} />
         <Route path="/todo:id" element={<UpdateTodo />} />
       </Routes>

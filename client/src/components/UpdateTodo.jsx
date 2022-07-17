@@ -2,8 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaCheck, FaPlus } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Navbar from "../pages/Navbar";
-import TodoList from "./TodoList";
+import Navbar from "../components/Navbar";
 
 function UpdateTodo(props) {
   const [data, setData] = useState([]);

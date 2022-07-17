@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./styles/todo.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar";
 import TodoList from "../components/TodoList";
 import axios from "axios";
 
