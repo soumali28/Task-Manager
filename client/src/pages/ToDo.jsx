@@ -26,7 +26,7 @@ function ToDo() {
     try{
       const res = await axios({
         method: "POST",
-        url: "http://localhost:8000/api/todos",
+        url: "api/todos",
         data: data
       })
       alert("Form submitted succesfully");

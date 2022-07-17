@@ -3,6 +3,8 @@ import "./styles/signin.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 function Login() {
   // registering the user
@@ -22,9 +24,28 @@ function Login() {
     }));
   };
   console.log(data);
-
-  function loginUser() {
-    console.log("login");
+  // validation of the form fields
+  const [error, setError] = useState(false);
+  const { email, password } = data;
+  async function loginUser() {
+    if (!email || !password) {
+      setError(true);
+    }
+    try {
+      const res = await axios({
+        method: "POST",
+        url: "api/users/login",
+        data: data,
+      });
+      //   setting the token to local storage
+      localStorage.setItem("token", res.data.token);
+      toast.success("Login successfull");
+      navigate("/todo");
+    } catch (err) {
+      //   toast.error("Oh no! An error occured");
+      console.log(err);
+      return [];
+    }
   }
 
   // navigaion to login page
@@ -38,7 +59,7 @@ function Login() {
       <div className="items ">
         <div className="sign_in_container text-center">
           <h1 className="text-5xl mb-4 text-zinc-900">Login</h1>
-
+          <ToastContainer />
           <div className="text-left">
             <form>
               <label className="block">
@@ -48,11 +69,15 @@ function Login() {
 
                 <input
                   type="email"
+                  required
                   onChange={handleInput("email")}
                   placeholder="xyz@example.com"
                   className="mt-1 mb-3 block w-full px-12 py-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
       focus:outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900"
                 />
+                {error && !email && (
+                  <span className="text-purple-200">*Enter valid email</span>
+                )}
               </label>
 
               <label className="block">
@@ -62,11 +87,15 @@ function Login() {
 
                 <input
                   type="password"
+                  required
                   onChange={handleInput("password")}
                   placeholder="Enter your password"
                   className="mt-1 mb-4 block w-full px-12 py-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
       focus:outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900"
                 />
+                {error && !password && (
+                  <span className="text-purple-200">*Enter valid password</span>
+                )}
               </label>
 
               <button

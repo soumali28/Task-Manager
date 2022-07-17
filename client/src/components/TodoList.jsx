@@ -10,7 +10,10 @@ function TodoList() {
     try {
       const res = await axios({
         method: "GET",
-        url: "http://localhost:8000/api/todos",
+        url: "api/todos",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
       });
       setData(res.data);
     } catch (err) {
@@ -27,7 +30,7 @@ function TodoList() {
     try {
       const res = await axios({
         method: "DELETE",
-        url: "http://localhost:8000/api/todos/" + id,
+        url: "api/todos/" + id,
       });
     } catch (err) {
       console.log(err);

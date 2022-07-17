@@ -21,7 +21,7 @@ function UpdateTodo(props) {
     try {
       const res = axios({
         method: "PUT",
-        url: "http://localhost:8000/api/todos/" + id,
+        url: "api/todos:" + id,
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",

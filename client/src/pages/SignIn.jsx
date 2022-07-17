@@ -37,13 +37,13 @@ function SignIn() {
     try {
       const res = await axios({
         method: "POST",
-        url: "http://localhost:8000/api/users",
+        url: "api/users",
         data: data,
       });
       toast.success("User Register");
       navigate("/todo");
     } catch (err) {
-      toast.error("Oh no! An erroe occured");
+      // toast.error("Oh no! An error occured");
       console.log(err);
       return [];
     }
@@ -91,7 +91,7 @@ function SignIn() {
                   className="mt-1 mb-3 block w-full px-12 py-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
       focus:outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900"
                 />
-                 {error && !email && (
+                 {error && !password && (
                   <span className="text-purple-200">*Enter valid email</span>
                 )}
               </label>
