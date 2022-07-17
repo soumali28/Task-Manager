@@ -20,31 +20,32 @@ function SignIn() {
 
           <div className="text-left">
             <form>
-              <label className="block">
-                <span className="block text-xl font-medium text-slate-700">
-                  Username:
-                </span>
-                <input
-                  type="text"
-                  placeholder="Enter username"
-                  className="mt-1 mb-3 block w-full px-12 py-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
-      focus:outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900"
-                />
-              </label>
               {click ? null : (
                 <label className="block">
                   <span className="block text-xl font-medium text-slate-700">
-                    Email:
+                    Name:
                   </span>
-
                   <input
-                    type="email"
-                    placeholder="xyz@example.com"
+                    type="text"
+                    placeholder="Enter Name"
                     className="mt-1 mb-3 block w-full px-12 py-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
       focus:outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900"
                   />
                 </label>
               )}
+              <label className="block">
+                <span className="block text-xl font-medium text-slate-700">
+                  Email:
+                </span>
+
+                <input
+                  type="email"
+                  placeholder="xyz@example.com"
+                  className="mt-1 mb-3 block w-full px-12 py-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
+      focus:outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900"
+                />
+              </label>
+
               <label className="block">
                 <span className="block text-xl font-medium text-slate-700">
                   Password:
@@ -70,9 +71,15 @@ function SignIn() {
 
           <p className="text-xl">OR</p>
           <div className="flex m-2 p-3 justify-center">
-            <button><FaGoogle className="mx-3 text-2xl" /></button>
-            <button><FaFacebook className="mx-3 text-2xl" /></button>
-            <button><FaGithub className="mx-3 text-2xl"/></button>
+            <button>
+              <FaGoogle className="mx-3 text-2xl" />
+            </button>
+            <button>
+              <FaFacebook className="mx-3 text-2xl" />
+            </button>
+            <button>
+              <FaGithub className="mx-3 text-2xl" />
+            </button>
           </div>
 
           <p>

@@ -8,6 +8,8 @@ import TodoList from "./TodoList";
 function UpdateTodo(props) {
   const [data, setData] = useState([]);
   const dataValue = useLocation().state.prop;
+  const fetchData = useLocation().state.fetchData;
+  console.log(fetchData);
   const handleInput = (input) => (e) => {
     const { value } = e.target;
     setData((prevData) => ({

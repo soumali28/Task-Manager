@@ -3,11 +3,15 @@ const dotenv = require("dotenv").config();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const { errorHandler } = require("./server/middleware/errorMiddleware");
+
+// connecting the database
 const connectDb = require("./server/config/db");
+connectDb();
+
 
 const app = express();
 const port = process.env.PORT || 5000;
-connectDb();
+
 
 // cors: * makes public api, orgin can have array of urls
 app.use(cors({
@@ -22,6 +26,7 @@ app.get("/", (req, res) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// routes
 app.use("/api/todos", require("./server/routes/todos"));
 app.use("/api/users", require("./server/routes/userRoutes"));
 

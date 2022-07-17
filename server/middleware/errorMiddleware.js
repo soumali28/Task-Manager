@@ -1,3 +1,4 @@
+// overwrites the default style of async error handler of express
 const errorHandler = (err, req, res, next) => {
   const statusCode = res.statusCode ? res.statusCode : 500;
 

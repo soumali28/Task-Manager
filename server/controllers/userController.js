@@ -1,14 +1,28 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
+// jwt token
 const jwt = require("jsonwebtoken");
+// for hashing password
 const bcrypt = require("bcryptjs");
+
+//  Generate JWT
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: "30d",
+  });
+};
+
 // @desp  Get user
 // @route GET /api/users/me
-// @access PUBLIC
+// @access PRIVATE
 
 const getUser = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.params.id);
-  res.json(user);
+  const {_id, name, email} = await User.findById(req.user.id);
+  res.json({
+    id: _id,
+    name: name,
+    email: email,
+  });
 });
 
 // @desp  Post user
@@ -74,12 +88,7 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-//  Generate JWT
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: "30d",
-  });
-};
+
 module.exports = {
   getUser,
   registerUser,
