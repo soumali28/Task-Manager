@@ -16,8 +16,8 @@ const getUser = asyncHandler(async (req, res) => {
 // @access PUBLIC
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { username, email, password } = req.body;
-  if (!username || !email || !password) {
+  const { name, email, password } = req.body;
+  if (!name || !email || !password) {
     res.status(400);
     throw new Error("Please add all fields");
   }
@@ -34,16 +34,17 @@ const registerUser = asyncHandler(async (req, res) => {
 
   //   create the user
   const user = await User.create({
-    username,
+    name,
     email,
     password: hashPassword,
   });
   if (user) {
     res.status(201).json({
       _id: user.id,
-      username: user.username,
+      name: user.name,
       email: user.email,
       password: user.password,
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);
@@ -56,15 +57,16 @@ const registerUser = asyncHandler(async (req, res) => {
 // @access PUBLIC
 
 const loginUser = asyncHandler(async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  //   check for the username
-  const user = await User.findOne({ username });
+  //   check for the email
+  const user = await User.findOne({ email });
   if (user && (await bcrypt.compare(password, user.password))) {
     res.json({
       _id: user.id,
-      username: user.username,
+      name: user.name,
       email: user.email,
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);
@@ -72,6 +74,12 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
+//  Generate JWT
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: "30d",
+  });
+};
 module.exports = {
   getUser,
   registerUser,
