@@ -9,7 +9,9 @@ function Navbar() {
   }
   return (
     <div className="bg-gradient-to-r from-purple-400 via-purple-700 to-purple-900 p-4 text-purple-100 text-right">
-      <button>Logout</button>
+      <Link to="/">
+        <button>Logout</button>
+      </Link>
     </div>
   );
 }

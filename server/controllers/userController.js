@@ -8,7 +8,7 @@ const bcrypt = require("bcryptjs");
 //  Generate JWT
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: "30d",
+    expiresIn: "3d",
   });
 };
 
@@ -73,12 +73,22 @@ const loginUser = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Invalid credentials");
   }
-
-  // @desp  Get user
-  // @route GET /api/users/me
-  // @access PRIVATE
 });
 
+// @desp  logout user
+// @route GET /api/users/logout
+// @access PRIVATE
+const logoutUser = asyncHandler(async (req, res) => {
+  res.json({
+    token: generateToken(""),
+    message: "logout sucessful",
+  });
+  res.redirect("/");
+});
+
+// @desp  Get user
+// @route GET /api/users/me
+// @access PRIVATE
 const getUser = asyncHandler(async (req, res) => {
   res.status(200).json(req.user);
 });
@@ -87,4 +97,5 @@ module.exports = {
   getUser,
   registerUser,
   loginUser,
+  logoutUser,
 };
