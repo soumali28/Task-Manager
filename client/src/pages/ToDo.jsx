@@ -27,6 +27,9 @@ function ToDo() {
       const res = await axios({
         method: "POST",
         url: "api/todos",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
         data: data
       })
       alert("Form submitted succesfully");

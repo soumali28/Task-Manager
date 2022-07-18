@@ -7,8 +7,7 @@ import Navbar from "../components/Navbar";
 function UpdateTodo(props) {
   const [data, setData] = useState([]);
   const dataValue = useLocation().state.prop;
-  const fetchData = useLocation().state.fetchData;
-  console.log(fetchData);
+ console.log(dataValue);
   const handleInput = (input) => (e) => {
     const { value } = e.target;
     setData((prevData) => ({
@@ -21,10 +20,9 @@ function UpdateTodo(props) {
     try {
       const res = axios({
         method: "PUT",
-        url: "api/todos:" + id,
+        url: "api/todos/" + id,
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token"),
         },
         data: data,
       });

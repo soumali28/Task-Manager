@@ -12,19 +12,6 @@ const generateToken = (id) => {
   });
 };
 
-// @desp  Get user
-// @route GET /api/users/me
-// @access PRIVATE
-
-const getUser = asyncHandler(async (req, res) => {
-  const {_id, name, email} = await User.findById(req.user.id);
-  res.json({
-    id: _id,
-    name: name,
-    email: email,
-  });
-});
-
 // @desp  Post user
 // @route POST /api/users
 // @access PUBLIC
@@ -86,8 +73,15 @@ const loginUser = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Invalid credentials");
   }
+
+  // @desp  Get user
+  // @route GET /api/users/me
+  // @access PRIVATE
 });
 
+const getUser = asyncHandler(async (req, res) => {
+  res.status(200).json(req.user);
+});
 
 module.exports = {
   getUser,

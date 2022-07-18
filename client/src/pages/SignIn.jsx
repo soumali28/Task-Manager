@@ -41,6 +41,7 @@ function SignIn() {
         data: data,
       });
       toast.success("User Register");
+      localStorage.setItem("token", res.data.token);
       navigate("/todo");
     } catch (err) {
       // toast.error("Oh no! An error occured");

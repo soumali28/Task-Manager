@@ -31,6 +31,9 @@ function TodoList() {
       const res = await axios({
         method: "DELETE",
         url: "api/todos/" + id,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
       });
     } catch (err) {
       console.log(err);
