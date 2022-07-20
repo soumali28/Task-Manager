@@ -15,7 +15,7 @@ const port = process.env.PORT || 5000;
 
 // cors: * makes public api, orgin can have array of urls
 app.use(cors({
-  origin: ["http://localhost:3000", "https://sou-task-manager.netlify.app/"]
+  origin: ["http://localhost:3000"]
 }))
 
 // testing route
