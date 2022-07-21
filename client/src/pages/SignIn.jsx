@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles/signin.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 
 function SignIn() {
@@ -28,7 +30,7 @@ function SignIn() {
   // validation of the form fields
   const [error, setError] = useState(false);
   const { name, email, password } = data;
-
+  // creating new users
   async function registerUser() {
     // checking if any of the field is null
     if (name || !email || !password) {
@@ -44,7 +46,7 @@ function SignIn() {
       localStorage.setItem("token", res.data.token);
       navigate("/todo");
     } catch (err) {
-      // toast.error("Oh no! An error occured");
+      toast.error("Oh no! An error occured");
       console.log(err);
       return [];
     }
@@ -56,6 +58,9 @@ function SignIn() {
     navigate("/login");
   }
 
+  const responseGoogle = (response) => {
+    console.log(response);
+  };
   return (
     <div className="bg-gradient-to-r from-purple-400 via-purple-700 to-purple-900 contain">
       <div className="items ">
@@ -92,7 +97,7 @@ function SignIn() {
                   className="mt-1 mb-3 block w-full px-12 py-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
       focus:outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900"
                 />
-                 {error && !password && (
+                {error && !password && (
                   <span className="text-purple-200">*Enter valid email</span>
                 )}
               </label>
@@ -109,7 +114,7 @@ function SignIn() {
                   className="mt-1 mb-4 block w-full px-12 py-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
       focus:outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900"
                 />
-                 {error && !password && (
+                {error && !password && (
                   <span className="text-purple-200">*Enter password</span>
                 )}
               </label>
@@ -127,16 +132,27 @@ function SignIn() {
           </div>
 
           <p className="text-xl">OR</p>
-          <div className="flex m-2 p-3 justify-center">
-            <button>
-              <FaGoogle className="mx-3 text-2xl" />
+
+          <div className="m-2 p-3 justify-center">
+            <GoogleOAuthProvider clientId={process.env.GOOGLE_CLIENT_ID}>
+              <GoogleLogin
+                onSuccess={responseGoogle}
+                onError={responseGoogle}
+                cookiePolicy={"single_host_origin"}
+                isSignedIn={true}
+                disabled={false}
+              />
+            </GoogleOAuthProvider>
+
+            {/* <button>
+              <FaGoogle className="mx-3 text-2xl" id="signIn" />
             </button>
             <button>
               <FaFacebook className="mx-3 text-2xl" />
             </button>
             <button>
               <FaGithub className="mx-3 text-2xl" />
-            </button>
+            </button> */}
           </div>
 
           <p>
