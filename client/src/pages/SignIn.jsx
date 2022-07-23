@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./styles/signin.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import axios from "axios";
 
 function SignIn() {
@@ -61,6 +60,13 @@ function SignIn() {
   const responseGoogle = (response) => {
     console.log(response);
   };
+
+  // password show
+  const [show, setShow] = useState(false);
+  function handleShowPassword() {
+    setShow(!show);
+  }
+
   return (
     <div className="bg-gradient-to-r from-purple-400 via-purple-700 to-purple-900 contain">
       <div className="items ">
@@ -102,13 +108,13 @@ function SignIn() {
                 )}
               </label>
 
-              <label className="block">
+              <label className="block relative">
                 <span className="block text-xl font-medium text-slate-700">
                   Password:
                 </span>
 
                 <input
-                  type="password"
+                  type={show ? "type" : "password"}
                   onChange={handleInput("password")}
                   placeholder="Enter your password"
                   className="mt-1 mb-4 block w-full px-12 py-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
@@ -117,6 +123,12 @@ function SignIn() {
                 {error && !password && (
                   <span className="text-purple-200">*Enter password</span>
                 )}
+                <div
+                  className="absolute top-11 right-4"
+                  onClick={handleShowPassword}
+                >
+                  {show ? <AiFillEye /> : <AiFillEyeInvisible />}
+                </div>
               </label>
               <ToastContainer />
               <button
@@ -131,29 +143,19 @@ function SignIn() {
             </form>
           </div>
 
-          <p className="text-xl">OR</p>
-
+          {/* <p className="text-xl">OR</p>
           <div className="m-2 p-3 justify-center">
-            <GoogleOAuthProvider clientId={process.env.GOOGLE_CLIENT_ID}>
+            <GoogleOAuthProvider clientId="675405292284-0efsob6qfbner62gmhcvi8rr98nvgt3i.apps.googleusercontent.com">
               <GoogleLogin
                 onSuccess={responseGoogle}
                 onError={responseGoogle}
+                text={"signin_with"}
                 cookiePolicy={"single_host_origin"}
                 isSignedIn={true}
                 disabled={false}
               />
             </GoogleOAuthProvider>
-
-            {/* <button>
-              <FaGoogle className="mx-3 text-2xl" id="signIn" />
-            </button>
-            <button>
-              <FaFacebook className="mx-3 text-2xl" />
-            </button>
-            <button>
-              <FaGithub className="mx-3 text-2xl" />
-            </button> */}
-          </div>
+          </div> */}
 
           <p>
             Already an user?
