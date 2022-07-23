@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./styles/signin.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 
@@ -54,6 +55,15 @@ function Login() {
     navigate(-1);
   }
 
+  const responseGoogle = (response) => {
+    console.log(response);
+  };
+
+  // password show
+  const [show, setShow] = useState(false);
+  function handleShowPassword() {
+    setShow(!show);
+  }
   return (
     <div className="bg-gradient-to-r from-purple-400 via-purple-700 to-purple-900 contain">
       <div className="items ">
@@ -80,13 +90,13 @@ function Login() {
                 )}
               </label>
 
-              <label className="block">
+              <label className="block relative">
                 <span className="block text-xl font-medium text-slate-700">
                   Password:
                 </span>
 
                 <input
-                  type="password"
+                  type={show ? "type" : "password"}
                   required
                   onChange={handleInput("password")}
                   placeholder="Enter your password"
@@ -96,6 +106,12 @@ function Login() {
                 {error && !password && (
                   <span className="text-purple-200">*Enter valid password</span>
                 )}
+                <div
+                  className="absolute top-11 right-4"
+                  onClick={handleShowPassword}
+                >
+                  {show ? <AiFillEye /> : <AiFillEyeInvisible />}
+                </div>
               </label>
 
               <button
@@ -109,19 +125,20 @@ function Login() {
               </button>
             </form>
           </div>
-
+          {/* 
           <p className="text-xl">OR</p>
           <div className="flex m-2 p-3 justify-center">
-            <button>
-              <FaGoogle className="mx-3 text-2xl" />
-            </button>
-            <button>
-              <FaFacebook className="mx-3 text-2xl" />
-            </button>
-            <button>
-              <FaGithub className="mx-3 text-2xl" />
-            </button>
-          </div>
+          <GoogleOAuthProvider clientId="675405292284-0efsob6qfbner62gmhcvi8rr98nvgt3i.apps.googleusercontent.com">
+              <GoogleLogin
+                onSuccess={responseGoogle}
+                onError={responseGoogle}
+                text= {"continue_with"}
+                cookiePolicy={"single_host_origin"}
+                isSignedIn={true}
+                disabled={false}
+              />
+            </GoogleOAuthProvider>
+          </div> */}
 
           <p>
             Not an User?

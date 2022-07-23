@@ -6,8 +6,8 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 //  Generate JWT
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
+const generateToken = (id, name) => {
+  return jwt.sign({ id , name}, process.env.JWT_SECRET, {
     expiresIn: "3d",
   });
 };
@@ -45,7 +45,7 @@ const registerUser = asyncHandler(async (req, res) => {
       name: user.name,
       email: user.email,
       password: user.password,
-      token: generateToken(user._id),
+      token: generateToken(user._id, user.name),
     });
   } else {
     res.status(400);
@@ -67,7 +67,7 @@ const loginUser = asyncHandler(async (req, res) => {
       _id: user.id,
       name: user.name,
       email: user.email,
-      token: generateToken(user._id),
+      token: generateToken(user._id , user.name),
     });
   } else {
     res.status(400);
@@ -75,16 +75,6 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-// @desp  logout user
-// @route GET /api/users/logout
-// @access PRIVATE
-const logoutUser = asyncHandler(async (req, res) => {
-  res.json({
-    token: generateToken(""),
-    message: "logout sucessful",
-  });
-  res.redirect("/");
-});
 
 // @desp  Get user
 // @route GET /api/users/me

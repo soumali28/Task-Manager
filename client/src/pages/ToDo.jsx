@@ -21,24 +21,23 @@ function ToDo() {
       [input]: value,
     }));
   };
-
+  console.log(localStorage.getItem("token"));
   async function postTask() {
-    try{
+    try {
       const res = await axios({
         method: "POST",
         url: "api/todos",
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
-        data: data
-      })
+        data: data,
+      });
       alert("Form submitted succesfully");
       window.location.reload();
-    }
-    catch(err){
+    } catch (err) {
       alert("Opps something went wrong");
       console.log(err);
-      return[];
+      return [];
     }
   }
 
