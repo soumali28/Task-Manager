@@ -13,3 +13,9 @@
   padding: 30px 80px;
   margin: 20px 0;
 }
+@media only screen and (max-width: 500px) {
+  .sign_in_container{
+    width: 90%;
+    padding: 40px;
+  }
+}

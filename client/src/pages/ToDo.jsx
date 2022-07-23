@@ -56,7 +56,7 @@ function ToDo() {
               type="text"
               placeholder="Task 1"
               onChange={handleInput("task")}
-              className="mt-1 mb-3 mx-3 w-1/3 px-12 py-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
+              className="mt-1 mb-3 mx-3 w-1/3 lg:px-12 py-2 p-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
       focus:outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900"
             />
             <input
@@ -64,7 +64,7 @@ function ToDo() {
               name="desp"
               onChange={handleInput("desp")}
               placeholder="Stop Procastinating!"
-              className="mt-1 mb-3 w-1/2 px-12 py-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
+              className="mt-1 mb-3 w-1/2 lg:px-12 py-2 p-2 bg-transparent border border-slate-300 rounded-md text-md shadow-md placeholder-zinc-700
       focus:outline-none focus:border-purple-900 focus:ring-1 focus:ring-purple-900"
             />
             <button onClick={postTask}>
