@@ -23,29 +23,28 @@ function ToDo() {
   };
 
   async function postTask() {
-    try{
+    try {
       const res = await axios({
         method: "POST",
         url: "api/todos",
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
-        data: data
-      })
+        data: data,
+      });
       alert("Form submitted succesfully");
       window.location.reload();
-    }
-    catch(err){
+    } catch (err) {
       alert("Opps something went wrong");
       console.log(err);
-      return[];
+      return [];
     }
   }
 
   return (
     <>
       <Navbar />
-      <div className="bg-gradient-to-r from-purple-400 via-purple-700 to-purple-900 contain text-center">
+      <div className="bg-gradient-to-r from-purple-400 via-purple-700 to-purple-900 contain text-center min-h-screen">
         <div className="items">
           <h1 className="text-3xl text-purple-300 block mt-6 mb-4 font-bold">
             My Todos
@@ -73,6 +72,16 @@ function ToDo() {
           </div>
         </div>
         <TodoList />
+        <footer className="mb-3 text-purple-300 absolute bottom-0 left-0 right-0">
+          Developed by{" "}
+          <a
+            className="text-purple-200"
+            href="https://soumali.netlify.app/"
+            target="_blank"
+          >
+            Soumali
+          </a>
+        </footer>
       </div>
     </>
   );

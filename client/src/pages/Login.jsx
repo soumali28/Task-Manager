@@ -65,7 +65,7 @@ function Login() {
     setShow(!show);
   }
   return (
-    <div className="bg-gradient-to-r from-purple-400 via-purple-700 to-purple-900 contain">
+    <div className="bg-gradient-to-r from-purple-400 via-purple-700 to-purple-900 contain min-h-screen">
       <div className="items ">
         <div className="sign_in_container text-center">
           <h1 className="text-5xl mb-4 text-zinc-900">Login</h1>
@@ -152,6 +152,16 @@ function Login() {
             </button>
           </p>
         </div>
+        <footer className="mb-3 text-purple-300 absolute bottom-0">
+          Developed by{" "}
+          <a
+            className="text-purple-200"
+            href="https://soumali.netlify.app/"
+            target="_blank"
+          >
+            Soumali
+          </a>
+        </footer>
       </div>
     </div>
   );

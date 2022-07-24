@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles/signin.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
@@ -68,7 +68,7 @@ function SignIn() {
   }
 
   return (
-    <div className="bg-gradient-to-r from-purple-400 via-purple-700 to-purple-900 contain">
+    <div className="bg-gradient-to-r from-purple-400 via-purple-700 to-purple-900 contain min-h-screen">
       <div className="items ">
         <div className="sign_in_container text-center">
           <h1 className="text-5xl mb-4 text-zinc-900">SignUp</h1>
@@ -169,6 +169,16 @@ function SignIn() {
             </button>
           </p>
         </div>
+        <footer className="mb-3 text-purple-300 absolute bottom-0">
+          Developed by{" "}
+          <a
+            className="text-purple-200"
+            href="https://soumali.netlify.app/"
+            target="_blank"
+          >
+            Soumali
+          </a>
+        </footer>
       </div>
     </div>
   );
