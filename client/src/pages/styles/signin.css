@@ -4,14 +4,16 @@
   align-items: center;
 }
 .sign_in_container {
-  background: rgba(247, 243, 243, 0.342);
+  background: transparent;
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.301);
   backdrop-filter: blur(4.7px);
   -webkit-backdrop-filter: blur(4.7px);
-  border: 1px solid #701a75;
   padding: 30px 80px;
-  margin: 20px 0 80px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 @media only screen and (max-width: 500px) {
   .sign_in_container{
