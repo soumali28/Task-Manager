@@ -1,0 +1,13 @@
+.colorPicker {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  cursor: pointer;
+  appearance: none;
+  background-color: transparent;
+}
+
+.colorPicker::-webkit-color-swatch {
+  border: none;
+  border-radius: 5px;
+}

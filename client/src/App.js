@@ -3,6 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 // components and pages
 import UpdateTodo from "./components/UpdateTodo";
+import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignIn from "./pages/SignIn";
@@ -15,6 +16,7 @@ function App() {
       <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/todo" element={<ToDo />} />
         <Route path="/todo:id" element={<UpdateTodo />} />
       </Routes>
