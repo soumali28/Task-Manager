@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./styles/signin.css";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import { GoogleLogin } from "@react-oauth/google";
 import { Link, useNavigate } from "react-router-dom";
 import {
   AiFillEye,
@@ -11,6 +9,7 @@ import {
 } from "react-icons/ai";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+
 
 function Login() {
   // registering the user
@@ -71,7 +70,7 @@ function Login() {
   }
   return (
     <div className="bg-gradient-to-r from-zinc-700  via-zinc-900 to-zinc-700 contain min-h-screen">
-      <div className="bg-zinc-700 p-4 text-purple-100 flex justify-between items-center shadow-[0_0_60px_-15px_rgba(0,0,0,0.7)]">
+      <div className="navBar bg-zinc-700 p-4 text-purple-100 flex justify-between items-center shadow-[0_0_60px_-15px_rgba(0,0,0,0.7)]">
         <Link to="/" className="text-xl">
           Task<span className="text-pink-700">W</span>izard
         </Link>
@@ -133,7 +132,7 @@ function Login() {
 
               <button
                 type="button"
-                className="mt-4 mb-2 mx-8 block w-3/4 px-3 py-2 bg-gradient-to-r from-zinc-900 via-zinc-900 to-pink-700 rounded-md text-md text-purple-200"
+                className="mt-4 mb-2 mx-4 block w-3/4 px-3 py-2 bg-gradient-to-r from-zinc-900 via-zinc-900 to-pink-700 rounded-md text-md text-purple-200"
                 onClick={loginUser}
               >
                 Login
@@ -144,14 +143,14 @@ function Login() {
           <div>
             <button
               type="button"
-              className="mt-4 mb-2 mx-8 flex items-center  px-3 py-2 border border-l-rose border-t-rose rounded-md text-md text-purple-200"
+              className="btns mt-4 mb-2 mx-8 flex items-center  px-3 py-2 rounded-md text-md text-purple-200"
             >
               <AiFillGoogleCircle className="mr-3 text-xl" />
               Sign in with Google
             </button>
             <button
               type="button"
-              className="mt-4 mb-2 mx-8 flex items-center  px-3 py-2 border border-l-rose border-t-rose rounded-md text-md text-purple-200"
+              className=" btns mt-4 mb-2 mx-8 flex items-center  px-3 py-2 rounded-md text-md text-purple-200"
             >
               <AiFillGithub className="mr-3 text-xl" />
               Sign in with Github
@@ -163,7 +162,7 @@ function Login() {
           <button
             type="button"
             onClick={RegisterPage}
-            className="font-bold mx-1"
+            className="font-bold mx-1 text-rose"
           >
             {" "}
             Register

@@ -18,7 +18,7 @@ function Dashboard() {
           {/* mapping will happen */}
 
           <div className="categoryCard bg-zinc-600 inline-block p-4 rounded-md w-72 mr-12">
-            <div className="flex justify-between items-start mb-16">
+            <div className="flex justify-between items-start mb-12">
               <input
                 type="color"
                 value="#2CAAA2"

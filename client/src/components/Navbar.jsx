@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import "./styles/navbar.css"
 
 function Navbar() {
   const [click, setCLick] = useState(false);
@@ -10,8 +11,8 @@ function Navbar() {
   }
 
   return (
-    <div className="bg-zinc-700 p-4 text-purple-100 flex justify-between items-center shadow-[0_0_60px_-15px_rgba(0,0,0,0.7)]">
-      <Link to="/" className="text-xl">
+    <div className="navBar bg-zinc-700 p-3 text-purple-100 flex justify-between items-center shadow-[0_0_60px_-15px_rgba(0,0,0,0.7)]">
+      <Link to="/" className="text-xl navTitle">
         Task<span className="text-pink-700">W</span>izard
       </Link>
 

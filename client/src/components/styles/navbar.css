@@ -1,0 +1,7 @@
+.navBar a{
+    text-decoration: none;
+    color: #fff;
+}
+.navBar a:hover{
+    color: #fff;
+}

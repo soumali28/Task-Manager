@@ -15,8 +15,13 @@
   justify-content: space-between;
   align-items: center;
 }
+.sign_in_container .btns {
+  border-width: 1px;
+  border-left-color: #ee062d;
+  border-top-color: #ee062d;
+}
 @media only screen and (max-width: 500px) {
-  .sign_in_container{
+  .sign_in_container {
     width: 90%;
     padding: 40px;
   }
