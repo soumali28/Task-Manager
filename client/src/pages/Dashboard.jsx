@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { FaCheck, FaEdit, FaTrash } from "react-icons/fa";
 import "./styles/dashboard.css";
 import AddCard from "../components/AddCard";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
   return (
@@ -17,22 +18,23 @@ function Dashboard() {
         <div className="flex mx-4">
           {/* mapping will happen */}
 
-          <div className="categoryCard bg-zinc-600 inline-block p-4 rounded-md w-72 mr-12">
-            <div className="flex justify-between items-start mb-12">
-              <input
-                type="color"
-                value="#2CAAA2"
-                className="w-12 h-12 colorPicker"
-              />
-              <button>
-                <FaTrash className="text-pink-700" />
-              </button>
+          <Link to="/dashboard-todo:id">
+            <div className="categoryCard bg-zinc-600 inline-block p-4 rounded-md w-72 mr-12">
+              <div className="flex justify-between items-start mb-12">
+                <input
+                  type="color"
+                  value="#2CAAA2"
+                  className="w-12 h-12 colorPicker"
+                />
+                <button>
+                  <FaTrash className="text-pink-700" />
+                </button>
+              </div>
+
+              <p className="text-2xl text-purple-200">Category Name</p>
+              <p className="text-zinc-400">0 tasks</p>
             </div>
-
-            <p className="text-2xl text-purple-200">Category Name</p>
-            <p className="text-zinc-400">0 tasks</p>
-          </div>
-
+          </Link>
           <AddCard />
         </div>
       </div>

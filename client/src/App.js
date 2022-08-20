@@ -17,7 +17,7 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/todo" element={<ToDo />} />
+        <Route path="/dashboard-todo:id" element={<ToDo />} />
         <Route path="/todo:id" element={<UpdateTodo />} />
       </Routes>
     </>
