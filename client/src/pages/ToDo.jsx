@@ -5,6 +5,7 @@ import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../components/Navbar";
 import TodoList from "../components/TodoList";
 import axios from "axios";
+import Sidebar from "../components/Sidebar";
 
 function ToDo() {
   const [data, setData] = useState([
@@ -44,10 +45,14 @@ function ToDo() {
   return (
     <>
       <Navbar />
-      <div className="bg-gradient-to-r from-purple-400 via-purple-700 to-purple-900 contain text-center min-h-screen">
-        <div className="items">
-          <h1 className="text-3xl text-purple-300 block mt-6 mb-4 font-bold">
-            My Todos
+      <div className="relative">
+        <Sidebar />
+      </div>
+
+      <div className="bg-gradient-to-r from-zinc-700  via-zinc-900 to-zinc-700  contain text-center min-h-screen">
+        {/* <div className="items">
+          <h1 className="text-3xl text-zinc-400 block mt-6 mb-4 font-bold">
+            Category Name
           </h1>
           <br />
           <div className="add_list">
@@ -70,8 +75,8 @@ function ToDo() {
               <FontAwesomeIcon icon={faPlusCircle} className="icon" />
             </button>
           </div>
-        </div>
-        <TodoList />
+        </div> */}
+        {/* <TodoList /> */}
         <footer className="mb-3 text-purple-300 absolute bottom-0 left-0 right-0">
           Developed by{" "}
           <a
