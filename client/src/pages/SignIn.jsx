@@ -71,7 +71,7 @@ function SignIn() {
 
   return (
     <div className="bg-gradient-to-r from-zinc-700  via-zinc-900 to-zinc-700 contain min-h-screen">
-      <div className="navBar bg-zinc-700 p-4 text-purple-100 flex justify-between items-center shadow-[0_0_60px_-15px_rgba(0,0,0,0.7)]">
+      <div className="navBar bg-zinc-700 p-3 text-purple-100 flex justify-between items-center shadow-[0_0_60px_-15px_rgba(0,0,0,0.7)]">
         <Link to="/" className="text-xl">
           Task<span className="text-pink-700">W</span>izard
         </Link>
@@ -102,7 +102,7 @@ function SignIn() {
                   type="text"
                   placeholder="Enter Name*"
                   onChange={handleInput("name")}
-                  className="mt-1 mb-3 block px-2 py-2 bg-zinc-900 text-md text-zinc-500 shadow-sm shadow-rose placeholder-zinc-500
+                  className="mt-1 mb-3 block px-2 py-2 bg-zinc-900 text-md text-zinc-500  placeholder-zinc-500
                   focus:outline-none focus:border-rose focus:ring-1 focus:ring-rose"
                 />
                 {error && !name && (
@@ -115,7 +115,7 @@ function SignIn() {
                   type="email"
                   onChange={handleInput("email")}
                   placeholder="xyz@example.com*"
-                  className="mt-1 mb-3 block w-full px-2 py-2 bg-zinc-900 text-md  text-zinc-500 shadow-sm shadow-rose placeholder-zinc-500
+                  className="mt-1 mb-3 block w-full px-2 py-2 bg-zinc-900 text-md  text-zinc-500  placeholder-zinc-500
                   focus:outline-none focus:border-rose focus:ring-1 focus:ring-rose"
                 />
                 {error && !password && (
@@ -128,7 +128,7 @@ function SignIn() {
                   type={show ? "type" : "password"}
                   onChange={handleInput("password")}
                   placeholder="Enter your password*"
-                  className="mt-1 mb-3 block w-full px-2 py-2 bg-zinc-900 text-md  text-zinc-500 shadow-sm shadow-rose placeholder-zinc-500
+                  className="mt-1 mb-3 block w-full px-2 py-2 bg-zinc-900 text-md  text-zinc-500 placeholder-zinc-500
                   focus:outline-none focus:border-rose focus:ring-1 focus:ring-rose"
                 />
                 {error && !password && (

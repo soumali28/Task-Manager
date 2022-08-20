@@ -7,7 +7,7 @@ import Img from "../assets/task.png";
 function Home() {
   return (
     <div className="bg-gradient-to-r from-zinc-700  via-zinc-900 to-zinc-700 contain min-h-screen">
-      <div className="navBar bg-zinc-700 p-4 text-purple-100 flex justify-between items-center shadow-[0_0_60px_-15px_rgba(0,0,0,0.7)]">
+      <div className="navBar bg-zinc-700 p-3 text-purple-100 flex justify-between items-center shadow-[0_0_60px_-15px_rgba(0,0,0,0.7)]">
         <Link to="/" className="text-xl">
           Task<span className="text-pink-700">W</span>izard
         </Link>
