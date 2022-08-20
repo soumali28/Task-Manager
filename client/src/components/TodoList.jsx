@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { FaCheck, FaEdit, FaTrash } from "react-icons/fa";
+import { Form } from "react-bootstrap";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function TodoList() {
@@ -44,38 +45,29 @@ function TodoList() {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="list text-left">
+      <div className="list text-left p-10">
         {/* mapping will start form here */}
         {data.map((item) => {
           return (
             <div
-              className="mb-4 flex justify-between items-center border-b pb-3 border-purple-700"
+              className="mb-4 flex justify-between items-center border-b  border-zinc-600"
               key={item._id}
             >
-              <div>
+              <div className="flex items-center justify-center">
                 {" "}
-                <h1 className="text-3xl">{item.task}</h1>
-                <p className="text-xl">{item.desp}</p>
+                <Form.Check color="success" type="checkbox" className="mr-3 mb-2" />
+                <p className="text-xl text-zinc-400">{item.task}</p>
               </div>
 
               <div>
-                {/* <button
-                  key={item._id}
-                  type="button"
-                  name={item._id}
-                  onClick={completedTask(item._id)}
-                  className="mx-3 px-2 py-2  rounded-lg hover:bg-green hover:text-purple-100 hover:border-none"
-                >
-                  <FaCheck />
-                </button> */}
                 <Link to={"/todo:" + `${item._id}`} state={{ prop: item }}>
-                  <button className="mx-3 px-2 py-2  rounded-lg hover:bg-zinc-500 hover:text-purple-100 hover:border-none">
+                  <button className="mx-3 px-2 py-2 text-green rounded-lg hover:bg-green hover:text-purple-100 hover:border-none">
                     <FaEdit />
                   </button>
                 </Link>
 
                 <button
-                  className="mx-3 px-2 py-2 rounded-lg hover:bg-pink-700 hover:text-purple-100 hover:border-none"
+                  className="mx-3 px-2 py-2 text-pink-700 rounded-lg hover:bg-pink-700 hover:text-purple-100 hover:border-none"
                   onClick={deleteTask(item._id)}
                 >
                   <FaTrash />
