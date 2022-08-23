@@ -12,7 +12,7 @@
 
 ## Screenshorts
 1. Home Page
-![React App - Google Chrome 24-07-2022 17_55_03](https://user-images.githubusercontent.com/66300439/180647248-685cbf1a-0524-46cf-b1c0-107ad1d88ef8.png)
+
 1. Sign In Page
 
 ![React App - Google Chrome 24-07-2022 17_54_55](https://user-images.githubusercontent.com/66300439/180647428-b3ef42cb-f50e-4f2f-82a2-5cd9fd5b8359.png)
