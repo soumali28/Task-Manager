@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import "./styles/navbar.css"
+import "./styles/navbar.css";
 
 function Navbar() {
   const [click, setCLick] = useState(false);
@@ -17,9 +17,9 @@ function Navbar() {
       </Link>
 
       <div>
-        <Link to="/dashboard">Dashboard</Link>
-        <Link to="/notes" className="mx-4">Notes</Link>
-        <Link to="/profile">Profile</Link>
+        <Link to="/dashboard">Lists</Link>
+        {/* <Link to="/notes" className="mx-4">Notes</Link>
+            <Link to="/profile">Profile</Link> */}
       </div>
       <div className="flex justify-center items-center">
         <a
